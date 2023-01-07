@@ -1,0 +1,6 @@
+<nav class="flex justify-end h-18 p-2">
+    {{- /*gotype: neohealth.Website*/ -}}
+    {{ range $img := .Languages  }}
+        <a class="p-2" href={{$img.Href}}><img width="24" height="24" src={{$img.Src}} alt={{$img.Alt}}/></a>
+    {{ end }}
+</nav>

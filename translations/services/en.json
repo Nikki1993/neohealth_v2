@@ -1,0 +1,181 @@
+[
+  {
+    "title": "Face",
+    "description": "Any face treatment includes consultation from the specialist about the skin type, cleansing and final step in regards to the skin type using only EU certified products",
+    "icon": "facial-treatment.svg",
+    "prices": [
+      {
+        "description": "Cleanse, face & neck massage, final skin treatment depending on the type of skin",
+        "name": " IQ Hiro-massage Face Lift",
+        "price": "85"
+      },
+      {
+        "description": "Deep cleanse, anti-acne peeling, face mask & anti-acne treatment ",
+        "name": " Anti-Acne Treatment",
+        "price": "105"
+      },
+      {
+        "description": "Cleanse, enzyme peeling, 20-25 minutes massage, serum & final step regarding skin care. ",
+        "name": " Face Care Treatment",
+        "price": "95"
+      },
+      {
+        "description": "Cleanse, enzyme peeling, 20-25 minutes massage, serum, a special ampoule (vitamin C, Hyaluron, etc) or collagen mask & final step regarding skin care.",
+        "name": "Luxury Face Care Treatment",
+        "price": "120"
+      },
+      {
+        "description": "Chemical peeling with various acids depending on the skin type including cleansing, serum & final step regarding skin care.",
+        "name": " Peel + Treatment",
+        "price": "95"
+      },
+      {
+        "description": "Chemical peeling with various acids depending on the skin type but this should be taken as an addition to other face treatment offers.",
+        "name": "Peeling",
+        "price": "65"
+      },
+      {
+        "description": "Cleansing, 2 step special treatment (peeling & mask), everything is done around the eye area. ",
+        "name": " Eye Peeling Treatment",
+        "price": "50"
+      },
+      {
+        "description": "Non-invasive treatment based on peeling, stimulation of the skin with an effect of bio-revitalization without injections. (face & neck)",
+        "name": "PRX-T33 Revitalization Peel",
+        "price": "110"
+      },
+      {
+        "description": "Mesotherapy point-by-point on the head surface of the skin. Programme \"hair loss\"",
+        "name": "Meso - Hair Therapy",
+        "price": "from 140"
+      },
+      {
+        "description": "Mesotherapy point-by-point of the face, depending on the skin type. (Various medicine: DMAE, lipolytic, silicium, firming cocktail, etc.)",
+        "name": "Mesotherapy (Face)",
+        "price": "from 110"
+      },
+      {
+        "description": "Injection method of hydration & bio-revitalization of the face.",
+        "name": "Bio-Revitalization",
+        "price": "180"
+      },
+      {
+        "description": "Mask from the EU manufacturers. Used after various treatment, consider this as an addition to other treatments.",
+        "name": "Collagen Mask",
+        "price": "35"
+      },
+      {
+        "description": "Bio-revitalization without injections, 2 phase treatment includes first, peeling with various acids and second, application of the highly concentrated vitamin cocktail that includes Hyaluronic & Ascorbic acids and vitamin A. ",
+        "name": "Bio C",
+        "price": "115"
+      },
+      {
+        "description": "Bipolar RF Lifting procedure using Eximia hr77",
+        "name": "RF Face",
+        "price": "95"
+      },
+      {
+        "description": "Dermal fillers for fine, mid and deep wrinkles, lip contour and lip volume, face contour and face augmentation, deep skin hydration.",
+        "name": "Hyaluronic Acid Filler 1.2ml",
+        "price": "from 250"
+      },
+      {
+        "description": "Boosts skin metabolism and natural production of oxygen providing deep down hydration. Instant effect just after one procedure.",
+        "name": "CO2 Carboxy Therapy",
+        "price": "55"
+      },
+      {
+        "description": "Innovative procedure done via medical device without injection meso - and oxygen therapy. Using highly concentrated oxygen and Anion, reduce Reactive oxygen system, regenerates broken cells, boost immunity, improve troubling skin problems and rejuvenate your tired skin.",
+        "name": "O2toDerm",
+        "price": "125"
+      }
+    ],
+    "subtitle": "Main Course"
+  },
+  {
+    "title": "Body",
+    "description": "All that your body will ever need to make you feel amazing using latest technologies. It includes consultation from the specialist and personalized program",
+    "icon": "depilation.svg",
+    "prices": [
+      {
+        "description": "Mesotherapy point-by-point of the body, depending on the skin type. (Various medicine: anti-cellulite, lipolytic, silicium, firming cocktail, etc.)",
+        "name": "Mesotherapy (Body)",
+        "price": "from 60.00"
+      },
+      {
+        "description": "Lymphatic drainage of the legs using Eximia hr77 device with RF function.",
+        "name": "RF Lympha treatment",
+        "price": "100.00"
+      },
+      {
+        "description": "Weight loss programme using Eximia hr77 device (Radio Frequency, Laserporation & Vacuum Massage). For instance, abdomen.",
+        "name": "RF Body 1 Side",
+        "price": "75.00"
+      },
+      {
+        "description": "Weight loss programme using Eximia hr77 device (Radio Frequency, Laserporation & Vacuum Massage). For instance, abdomen and back side.",
+        "name": "RF Body 2 Sides",
+        "price": "95.00"
+      },
+      {
+        "description": "Lymphatic drainage of the legs and massage using Eximia hr77 device & weight loss programme for the abdomen.",
+        "name": "RF Lympha & Fat",
+        "price": "130.00"
+      },
+      {
+        "description": "Lymphatic drainage of the legs and massage using Eximia hr77 device & weight loss programme for the abdomen & sides.",
+        "name": "RF Lympha & Fat 2 sides",
+        "price": "170.00"
+      },
+      {
+        "description": "Anti-cellulite programme using Eximia hr77 device.",
+        "name": "RF anti-cellulite legs",
+        "price": "120.00"
+      }
+    ],
+    "subtitle": "It is time"
+  },
+  {
+    "title": "Hands",
+    "description": "Hand treatment may be chosen as an addition to any face or body treatment and is not mandatory but pleasant part of the overall care",
+    "icon": "lotion.svg",
+    "prices": [
+      {
+        "description": "Chemical peeling with various acids depending on the skin type",
+        "name": "Peeling",
+        "price": "35.00"
+      },
+      {
+        "description": "Relaxing hand massage",
+        "name": "Zoku Shin massage",
+        "price": "30.00"
+      },
+      {
+        "description": "Anti-age lifting mask",
+        "name": "Hand Mask",
+        "price": "20.00"
+      },
+      {
+        "description": "Chemical peeling, 10 minute massage & mask.",
+        "name": "Luxury hand treatment",
+        "price": "55.00"
+      },
+      {
+        "description": "Chemical peeling with various acids depending on the skin type",
+        "name": "Peeling Elbow",
+        "price": "35.00"
+      },
+      {
+        "description": "Lipolytic or firming mesotherapy of elbow area.",
+        "name": "Mesotherapy Elbow",
+        "price": "80.00"
+      },
+      {
+        "description": "Weight loss or firming programme using Eximia hr77 from shoulder to elbow.",
+        "name": "RF Arms",
+        "price": "95.00"
+      }
+    ],
+    "subtitle": "Cherry on top"
+  }
+]

@@ -1,0 +1,43 @@
+{{- /*gotype: neohealth.Website*/ -}}
+<section class="grid justify-center place-items-center grid-flow-row auto-rows-max grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+    {{range $card := .Services}}
+        <div class="h-full flex flex-col justify-between bg-white p-4 gap-3 shadow rounded overflow-hidden">
+            <div class="flex flex-col gap-3">
+                <div class="flex items-center">
+                    <img class="w-24 h-auto" alt={{$card.Icon}} src={{print "./static/icons/services/" $card.Icon}} />
+                    <div class="ml-4">
+                        <h2 class="text-xl font-medium">{{$card.Title}}</h2>
+                        <h4 class="text-sm font-light text-gray-900">{{$card.SubTitle}}</h4>
+                    </div>
+                </div>
+                <p class="leading-6 text-sm font-light">{{$card.Description}}</p>
+
+            </div>
+            <button class="text-left text-base font-medium text-indigo-600 bg-gray-50 -m-4 p-4 mt-1 text-center"
+                    @click={{print "openModal($refs." $card.Title ")"}}>See Price
+            </button>
+        </div>
+        <dialog class="fixed h-[calc(100vh_-_10rem)] inset-0 mx-auto mr-2 ml-2 p-0 rounded shadow-2xl z-20"
+                x-ref={{$card.Title}}>
+            <div class="h-full overflow-x-hidden overflow-y-auto">
+                <ul class="grid grid-col-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 grid-flow-row auto-rows-max p-4">
+                    {{ range $service := $card.Services}}
+                        <li class="flex flex-col py-3">
+                            <div>
+                                <h2 class="text-sm font-medium text-gray-900">{{$service.Name}}</h2>
+                                <p class="text-sm text-gray-500 break-words">{{$service.Description}}</p>
+                            </div>
+                            <div class="text-sm text-indigo-600">{{$service.Price}} €</div>
+                        </li>
+                    {{ end }}
+                </ul>
+
+            </div>
+            <button class="sticky bottom-0 h-fit w-full text-center bg-indigo-600 text-white p-4 z-0 overflow-hidden"
+                    @click={{print "closeModal($refs." $card.Title ")"}}>Close
+            </button>
+        </dialog>
+    {{end}}
+</section>
+<div :class="{'fixed h-full w-full inset-0 bg-gray-500 mix-blend-multiply z-10': status, 'hidden': !status}" aria-hidden="true"></div>
+

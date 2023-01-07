@@ -1,0 +1,17 @@
+@font-face {
+    font-family: 'Inter';
+    src: url("./fonts/Inter.ttf");
+    font-weight: 100 1000;
+    font-stretch: 25% 151%;
+}
+
+@font-face {
+    font-family: 'Caveat';
+    src: url("./fonts/Caveat.ttf");
+    font-weight: 100 1000;
+    font-stretch: 25% 151%;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

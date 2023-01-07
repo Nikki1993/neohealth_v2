@@ -1,0 +1,1 @@
+(trap 'kill 0' SIGINT; air -c .air.toml & npx tailwindcss -i ./main.css -o ./static/output.css --watch)

@@ -1,0 +1,32 @@
+{{- /*gotype: neohealth.Website*/ -}}
+<!DOCTYPE html>
+<html lang={{.Lang}}>
+    {{template "head.gohtml" .}}
+    <body x-data="modal" :class="{'overflow-hidden': status}" class="max-w-screen-xl mx-auto bg-gray-200 flex flex-col gap-16 p-2">
+        {{template "appbar.gohtml" .}}
+        {{template "home.gohtml" .}}
+        {{template "services.gohtml" .}}
+        {{template "brands.gohtml" .}}
+        {{template "about.gohtml" .}}
+        {{template "contact.gohtml" .}}
+    </body>
+</html>
+<script>
+    document.addEventListener('alpine:init', () => {
+        const meta = document.head.querySelector('meta[name="theme-color"]');
+
+        Alpine.data('modal', () => ({
+            status: false,
+            openModal(ref) {
+                this.status = true
+                meta.setAttribute("content", "#000")
+                ref.show()
+            },
+            closeModal(ref) {
+                this.status = false
+                meta.setAttribute("content", "#1b2532")
+                ref.close()
+            }
+        }))
+    })
+</script>

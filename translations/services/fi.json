@@ -1,0 +1,181 @@
+[
+  {
+    "description": "Kaikki kasvohoidot sisältävät erityisasiantuntijan konsultaation, alkupuhdistuksen ja loppuvoitteet ja/tai tehotuotteet ihotyypin mukaan.",
+    "subtitle": "Päävalikko",
+    "title": "Kasvot",
+    "prices": [
+      {
+        "price": "85.00",
+        "description": "Alkupuhdistus, kasvojen ja kaulan hieronta, loppuvoide.",
+        "name": " IQ Hiro-massage Face Lift"
+      },
+      {
+        "description": "Hoidon suunnittelu, alkupuhdistus, syväpuhdistava anti-akne kuorinta, kasvonaamio ja loppuvoide.",
+        "name": " Anti-Acne Treatment",
+        "price": "105.00"
+      },
+      {
+        "name": " Face Care Treatment",
+        "price": "95.00",
+        "description": "Alkupuhdistus, entsymaattinen kuorinta, 20-25 min. kasvohieronta, seerumi ja loppuvoide ihotyypin mukaan."
+      },
+      {
+        "price": "120.00",
+        "name": "Luxury Face Care Treatment",
+        "description": "Alkupuhdistus, entsymaattinen kuorinta, 20-25 min. kasvohieronta, seerumi ja loppuvoide ihotyypin mukaan, erikoisampulli (C-vitamiini, hyaluronihappo) tai kasvonaamio (kollageeni, hyaluronihappo)."
+      },
+      {
+        "description": "Eri tyyppiset happokuorinnat ihotyypin ja iän mukaan. Hoitoon kuuluu myös alkupuhdistus, seerumi ja loppuvoide.",
+        "name": " Peel + Treatment",
+        "price": "95.00"
+      },
+      {
+        "name": "Peeling",
+        "price": "65.00",
+        "description": "Eri tyyppiset happokuorinnat ihotyypin ja iän mukaan (lisähoitona muiden kasvohoitojen kanssa)"
+      },
+      {
+        "description": "Kaksivaiheinen hoito silmänympärysiholle, sisältää kuorinnan ja naamion.",
+        "price": "50.00",
+        "name": " Eye Peeling Treatment"
+      },
+      {
+        "description": "Ei-invasiivinen hoito, joka perustuu kuorinnan biorevitalisaation vaikutuksella. Ilman ihon palautusaikaa.",
+        "name": "PRX-T33 Revitalization Peel",
+        "price": "110.00"
+      },
+      {
+        "price": "from 140.00",
+        "description": "Mesoterapia hiuspohjaan ohjelmalla \"hair loss\"",
+        "name": "Meso- Hair Therapy"
+      },
+      {
+        "price": "from 110.00",
+        "description": "Kasvojen mesoterapia viimeisimpien hoitotuotteiden kanssa (DMAE, pii, C-vitamiini, hyaluronihappo jne.)",
+        "name": "Mesotherapy (Face)"
+      },
+      {
+        "price": "180.00",
+        "name": "Bio-Revitalization",
+        "description": "Injektointimenetelmä, kasvojen ja kaulan syväkosteus, lifting ja biorevitalisaatio."
+      },
+      {
+        "price": "35.00",
+        "name": "Collagen Mask",
+        "description": "Kollageeni naamio (toimii lisähoitona muiden kasvohoitojen kanssa)."
+      },
+      {
+        "description": "Biorevitalisaatio ilman injektiota. Kaksivaiheinen hoito, johon kuuluu kuorinta ja erittäin voimakas A ja C-vitamiineilla tehty hoito.",
+        "name": "Bio C",
+        "price": "115.00"
+      },
+      {
+        "price": "95.00",
+        "description": "Bipolar RF Lifting procedure using Eximia hr77",
+        "name": "RF Face"
+      },
+      {
+        "name": "Hyaluronic Acid Filler 1.2ml",
+        "description": "Ihonalainen täyteaine ryppyihin ja juonteisiin, huulten muotoiluun ja-täyttöön, kasvojen muotoiluun ja-kohotukseen sekä syväkosteutukseen.",
+        "price": "from 250.00"
+      },
+      {
+        "description": "Innovatiivinen toimenpide tehtynä lääkinnällisellä laitteella ilman injektiota meso- ja happiterapia. Premium tason anti-age ihonhoito-ohjelma (elvyttää ihosoluja), jossa käytetään korkeapitoista uutettua puhdasta happea sekä poistettu aktiivisen hapen.",
+        "price": "125.00",
+        "name": "02toDerm"
+      },
+      {
+        "description": "Hiilidioksidin käyttö aktivoi ihon aineenvaihduntaa ja hapen luonnollista tuotantoa, joka syväkosteuttaa ihoa. Välitön vaikutus vain yhden toimenpiteen jälkeen.",
+        "price": "55.00",
+        "name": "C02 Carboxy Therapy"
+      }
+    ],
+    "icon": "facial-treatment.svg"
+  },
+  {
+    "subtitle": "Aika on tullut",
+    "prices": [
+      {
+        "description": "Vartalo-mesoterapia, mukaan lukien selluliitti-, lifting ja lipolyyttiset hoitot.",
+        "price": "from 60.00",
+        "name": "Mesotherapy (Body)"
+      },
+      {
+        "description": "Lymfakiertoa parantava fraktionaalinen radiofrekvenssi-hoito  Eximia hr77-laitteella.",
+        "name": "RF Lympha treatment",
+        "price": "100.00"
+      },
+      {
+        "description": "Painonpudotusohjelma ja ihon vahvistaminen vatsan alueella Eximia hr77 -laitteella (fraktionaalinen radiofrekvenssi-hoito, laserihoito, tyhjöhieronta)",
+        "price": "75.00",
+        "name": "RF Body 1 Side"
+      },
+      {
+        "name": "RF Body 2 Sides",
+        "description": "Painonpudotusohjelma ja ihon vahvistaminen Eximia hr77 -laitteella, kahdella alueella (fraktionaalinen radiofrekvenssi-hoito, laserihoito, tyhjöhieronta)",
+        "price": "95.00"
+      },
+      {
+        "description": "Lymfakierron tehostus ja painonpudotusohjelma vatsan alueella Eximia hr77 -laitteella,  fraktionaalinen radiofrekvenssi-hoito.",
+        "name": "RF Lympha & Fat",
+        "price": "130.00"
+      },
+      {
+        "price": "170.00",
+        "description": "Lymfakierron tehostus ja painonpudotusohjelma kahdella alueilla Eximia hr77 -laitteella,  fraktionaalinen radiofrekvenssi-hoito.",
+        "name": "RF Lympha & Fat 2 sides"
+      },
+      {
+        "name": "RF anti-cellulite legs",
+        "description": "Antiselluliittiohoito Eximia hr77-laitteella.",
+        "price": "120.00"
+      }
+    ],
+    "title": "Vartalo",
+    "description": "Kaikki, mitä kehosi tarvitsee ja mikä tuntuu mahtavalta viimeisimmän teknologian avulla. Jokainen menettely sisältää konsultaation ja henkilökohtaisen hoitosuunnitelman.",
+    "icon": "depilation.svg"
+  },
+  {
+    "subtitle": "Kirsikka kakun päällä",
+    "title": "Kädet",
+    "icon": "lotion.svg",
+    "prices": [
+      {
+        "name": "Peeling",
+        "description": "Erilaiset happokuorinnat ihotyypin mukaan. ",
+        "price": "35.00"
+      },
+      {
+        "description": "Rentouttava käsihieronta",
+        "price": "30.00",
+        "name": "Zoku Shin massage"
+      },
+      {
+        "description": "Liftaava anti-aging käsinaamio.",
+        "price": "20.00",
+        "name": "Hand Mask"
+      },
+      {
+        "price": "55.00",
+        "description": "Kemiallinen kuorinta, 10 min. hieronta ja naamio.",
+        "name": "Luxury hand treatment"
+      },
+      {
+        "description": "Kyynärpääalueen happokuorinta ihotyypin mukaan.",
+        "name": "Peeling Elbow",
+        "price": "35.00"
+      },
+      {
+        "name": "Mesotherapy Elbow",
+        "description": "Mesoterapia kyynärpäille.",
+        "price": "80.00"
+      },
+      {
+        "name": "RF Arms",
+        "description": "Painonpudotusohjelma ja ihoa vahvistava hoito kyynärpäästä olkapäähän Eximia hr77-laitteella.",
+        "price": "95.00"
+      }
+    ],
+    "description": "Käsihoito voidaan valita erilliseksi hoidoksi, lisäksi se on myös erinomainen valinta lisähoitona kasvo- tai vartalohoidon kanssa."
+  }
+]

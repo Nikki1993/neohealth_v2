@@ -1,0 +1,35 @@
+{
+  "items": [
+    {
+      "icon": "facebook.svg",
+      "link": "https://www.facebook.com/neohealthhelsinki/",
+      "name": "Facebook",
+      "tag": "neohealthhelsinki"
+    },
+    {
+      "icon": "instagram.svg",
+      "link": "https://www.instagram.com/neohealth_helsinki/",
+      "name": "Instagram",
+      "tag": "neohealth_helsinki"
+    },
+    {
+      "icon": "map.svg",
+      "link": "https://goo.gl/maps/q6caMcBGkqy",
+      "name": "Address",
+      "tag": "Munkkisaarenkatu 2"
+    },
+    {
+      "icon": "phone.svg",
+      "link": "tel:0449184183",
+      "name": "Phone",
+      "tag": "Press to call"
+    },
+    {
+      "icon": "email.svg",
+      "link": "mailto:elena@neohealth.fi",
+      "name": "Email",
+      "tag": "elena@neohealth.fi"
+    }
+  ],
+  "title": "Contact Us"
+}
