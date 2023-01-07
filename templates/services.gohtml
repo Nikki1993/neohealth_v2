@@ -17,10 +17,9 @@
                     @click={{print "openModal($refs." $card.Title ")"}}>See Price
             </button>
         </div>
-        <dialog class="fixed h-[calc(100vh_-_10rem)] inset-0 mx-auto mr-2 ml-2 p-0 rounded shadow-2xl z-20"
+        <dialog class="fixed max-h-[calc(100vh_-_10rem)] overflow-auto max-w-screen-md inset-0 m-auto rounded shadow-2xl z-20"
                 x-ref={{$card.Title}}>
-            <div class="h-full overflow-x-hidden overflow-y-auto">
-                <ul class="grid grid-col-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 grid-flow-row auto-rows-max p-4">
+                <ul class="h-fit grid grid-col-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 grid-flow-row auto-rows-max p-4">
                     {{ range $service := $card.Services}}
                         <li class="flex flex-col py-3">
                             <div>
@@ -31,11 +30,9 @@
                         </li>
                     {{ end }}
                 </ul>
-
-            </div>
-            <button class="sticky bottom-0 h-fit w-full text-center bg-indigo-600 text-white p-4 z-0 overflow-hidden"
-                    @click={{print "closeModal($refs." $card.Title ")"}}>Close
-            </button>
+                <button class="sticky bottom-0 h-fit w-full text-center bg-indigo-600 p-4 text-white z-0 rounded"
+                        @click={{print "closeModal($refs." $card.Title ")"}}>Close
+                </button>
         </dialog>
     {{end}}
 </section>
