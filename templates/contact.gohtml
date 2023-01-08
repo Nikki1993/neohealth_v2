@@ -1,15 +1,20 @@
 {{- /*gotype: neohealth.Website*/ -}}
-<section class="space-y-6">
-    <h1 class="text-xl font-medium">{{.Contacts.Title}}</h1>
-    <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
-        {{ range $social := .Contacts.Socials}}
-            <a class="font-light text-base flex gap-3" target="_blank" rel="noreferrer noopener" href={{$social.Link}}>
-                <img class="w-8 h-auto text-red-900" alt={{$social.Icon}} src={{print "./static/icons/contact/" $social.Icon}} />
-                <div class="flex flex-col justify-center">
-                    <h3 class="text-xs font-medium text-gray-800">{{$social.Name}}</h3>
-                    <span class="font-light break-all text-sm">{{$social.Tag}}</span>
-                </div>
-            </a>
-        {{end}}
+<footer class="flex flex-col gap-6">
+    <div class="relative">
+        <div class="absolute inset-0 flex items-center" aria-hidden="true">
+            <div class="w-full border-t-2 border-gray-300"></div>
+        </div>
     </div>
-</section>
+    <h3 class="text-center text-lg">{{.Contacts.Title}}</h3>
+        <div class="flex gap-10 justify-around flex-wrap py-5">
+            {{ range $social := .Contacts.Socials}}
+                <a class="font-light text-base flex gap-3" target="_blank" rel="noreferrer noopener" href={{$social.Link}}>
+                    <img class="w-8 h-auto text-red-900" alt={{$social.Icon}} src={{print "./static/icons/contact/" $social.Icon}} />
+                    <div class="flex flex-col justify-center">
+                        <h3 class="text-xs font-medium text-gray-800">{{$social.Name}}</h3>
+                        <span class="font-light break-all text-sm">{{$social.Tag}}</span>
+                    </div>
+                </a>
+            {{end}}
+        </div>
+</footer>

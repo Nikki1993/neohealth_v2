@@ -1,38 +1,41 @@
-{{- /*gotype: neohealth.Website*/ -}}
 <section class="grid justify-center place-items-center grid-flow-row auto-rows-max grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-    {{range $card := .Services}}
+    {{range .}}
+        {{- /*gotype: neohealth.Card*/ -}}
         <div class="h-full flex flex-col justify-between bg-white p-4 gap-3 shadow rounded overflow-hidden">
             <div class="flex flex-col gap-3">
                 <div class="flex items-center">
-                    <img class="w-24 h-auto" alt={{$card.Icon}} src={{print "./static/icons/services/" $card.Icon}} />
+                    <img class="w-24 h-auto" alt={{.Icon}} src={{print "./static/icons/services/" .Icon}} />
                     <div class="ml-4">
-                        <h2 class="text-xl font-medium">{{$card.Title}}</h2>
-                        <h4 class="text-sm font-light text-gray-900">{{$card.SubTitle}}</h4>
+                        <h2 class="text-xl font-medium">{{.Title}}</h2>
+                        <h4 class="text-sm font-light text-gray-900">{{.SubTitle}}</h4>
                     </div>
                 </div>
-                <p class="leading-6 text-sm font-light">{{$card.Description}}</p>
+                <p class="leading-6 text-sm font-light">{{.Description}}</p>
 
             </div>
             <button class="text-left text-base font-medium text-indigo-600 bg-gray-50 -m-4 p-4 mt-1 text-center"
-                    @click={{print "openModal($refs." $card.Title ")"}}>See Price
+                    @click={{print "openModal($refs." .Title ")"}}>See Price
             </button>
         </div>
-        <dialog class="fixed max-h-[calc(100vh_-_10rem)] overflow-auto max-w-screen-md inset-0 m-auto rounded shadow-2xl z-20"
-                @keydown.esc={{print "closeModal($refs." $card.Title ")"}}
-                x-ref={{$card.Title}}>
-                <ul class="h-fit grid grid-col-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 grid-flow-row auto-rows-max p-4">
-                    {{ range $service := $card.Services}}
-                        <li class="flex flex-col py-3">
-                            <div>
-                                <h2 class="text-sm font-medium text-gray-900">{{$service.Name}}</h2>
-                                <p class="text-sm text-gray-500 break-words">{{$service.Description}}</p>
+        <dialog class="fixed max-h-[calc(100vh_-_10rem)] overflow-auto max-w-screen-md lg:max-w-screen-lg inset-0 m-auto rounded shadow-2xl z-20"
+                @keydown.esc={{print "closeModal($refs." .Title ")"}}
+                x-ref={{.Title}}>
+                <ol class="list-decimal h-fit grid grid-col-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 grid-flow-row auto-rows-max p-4">
+                    {{ range .Services}}
+                        {{- /*gotype: neohealth.Item*/ -}}
+                        <li class="marker:text-sm marker:font-medium">
+                            <div class="flex flex-col py-3">
+                                <div>
+                                    <h2 class="text-sm font-medium text-gray-900">{{.Name}}</h2>
+                                    <p class="text-sm text-gray-500 break-words">{{.Description}}</p>
+                                </div>
+                                <div class="text-sm text-indigo-600">{{.Price}} €</div>
                             </div>
-                            <div class="text-sm text-indigo-600">{{$service.Price}} €</div>
                         </li>
                     {{ end }}
-                </ul>
+                </ol>
                 <button class="sticky bottom-0 h-fit w-full text-center bg-indigo-600 p-4 text-white z-0 rounded"
-                        @click={{print "closeModal($refs." $card.Title ")"}}>Close
+                        @click={{print "closeModal($refs." .Title ")"}}>Close
                 </button>
         </dialog>
     {{end}}

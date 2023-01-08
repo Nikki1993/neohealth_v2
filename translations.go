@@ -12,18 +12,18 @@ import (
 	"strings"
 )
 
-type Item struct {
+type Service struct {
 	Description string `json:"description"`
 	Name        string `json:"name"`
 	Price       string `json:"price"`
 }
 
 type Card struct {
-	Title       string `json:"title"`
-	SubTitle    string `json:"subtitle"`
-	Description string `json:"description"`
-	Icon        string `json:"icon"`
-	Services    []Item `json:"prices"`
+	Title       string    `json:"title"`
+	SubTitle    string    `json:"subtitle"`
+	Description string    `json:"description"`
+	Icon        string    `json:"icon"`
+	Services    []Service `json:"prices"`
 }
 
 type Language struct {
@@ -45,8 +45,9 @@ type Brands struct {
 }
 
 type Member struct {
-	Name  string
-	Title string
+	Name    string   `json:"name"`
+	Title   string   `json:"title"`
+	Socials []Social `json:"socials"`
 }
 
 type About struct {
@@ -178,7 +179,10 @@ func GenerateTranslations(r *http.Request) (Website, error) {
 		return Website{}, err
 	}
 
-	about.Team = append(about.Team, Member{Name: "Elena Kononova", Title: "Founder / Doctor"})
+	about.Team, err = parseJSON([]Member{}, "team/"+ext)
+	if err != nil {
+		return Website{}, err
+	}
 
 	contact, err := parseJSON(Contacts{}, "contact/"+ext)
 	if err != nil {

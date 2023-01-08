@@ -1,6 +1,6 @@
 {{- /*gotype: neohealth.Website*/ -}}
-<section class="flex flex-col gap-3">
-    <div x-data="{ open: false }" class="space-y-2">
+<section class="flex flex-col md:flex-row-reverse gap-3">
+    <div x-data="{ open: false }" class="space-y-2 flex-1">
         <h1 class="text-xl font-medium">
             {{.About.Title}}
         </h1>
@@ -14,18 +14,31 @@
         text-white shadow-sm"
         >{{.About.Button}}</button>
     </div>
-    <ul role="list" class="space-y-12 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 sm:space-y-0 lg:grid-cols-3 lg:gap-x-8">
+    <ul role="list" class="flex-1">
         {{range $member := .About.Team}}
             <li>
-                <div class="space-y-4">
-                    <div class="aspect-w-3 aspect-h-2">
-                        <img class="rounded-lg object-cover shadow-lg" src="./static/profile.png" alt="profile">
-                    </div>
-                    <div class="space-y-2">
-                        <div class="space-y-1 text-lg font-medium leading-6">
-                            <h1>{{$member.Name}}</h1>
-                            <p class="text-indigo-600">{{$member.Title}}</p>
+                <div class="flex">
+                    <div class="">
+                        <img class="w-64 h-auto rounded-lg object-cover shadow-lg" src="./static/profile.png"
+                             alt="profile">
+                        <div class="space-y-1">
+                            <div class="space-y-1 text-lg font-medium leading-6">
+                                <h1>{{$member.Name}}</h1>
+                                <p class="text-indigo-600">{{$member.Title}}</p>
+                            </div>
                         </div>
+                    </div>
+                    <div class="ml-2 flex flex-col gap-2">
+                        {{ range $member.Socials }}
+                        <a class="font-light text-base flex gap-2" target="_blank" rel="noreferrer noopener" href="{{.Link}}">
+                            <img class="w-6 h-auto text-red-900"
+                                 alt="alt" src={{print "./static/icons/contact/" .Icon }} />
+                            <div class="flex flex-col justify-center">
+                                <h3 class="text-xs font-medium text-gray-800">{{.Name}}</h3>
+                                <span class="font-light break-all text-sm">{{.Tag}}</span>
+                            </div>
+                        </a>
+                        {{end}}
                     </div>
                 </div>
             </li>
