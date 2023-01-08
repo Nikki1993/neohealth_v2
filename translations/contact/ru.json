@@ -1,23 +1,44 @@
-{
-  "title": "Контакты",
+[{
   "items": [
     {
-      "name": "facebook",
-      "tag": "neohealthhelsinki",
-      "link": "https://www.facebook.com/neohealthhelsinki/",
-      "icon": "facebook.svg"
+      "icon": "facebook.svg",
+      "link": "https://facebook.com/neohealthhelsinki/",
+      "name": "Facebook",
+      "tag": "neohealthhelsinki"
     },
     {
-      "tag": "neohealth_helsinki",
       "icon": "instagram.svg",
+      "link": "https://instagram.com/neohealth_helsinki/",
       "name": "Instagram",
-      "link": "https://www.instagram.com/neohealth_helsinki/"
+      "tag": "neohealth_helsinki"
     },
     {
+      "icon": "map.svg",
       "link": "https://goo.gl/maps/q6caMcBGkqy",
-      "tag": "Munkkisaarenkatu 2",
-      "name": "Адрес",
-      "icon": "map.svg"
+      "name": "Address",
+      "tag": "Munkkisaarenkatu 2"
+    }
+  ],
+  "title": "Find Us"
+}, {
+  "title": "Reach Us",
+  "items": [{
+    "icon": "phone.svg",
+    "link": "tel:0449184183",
+    "name": "Phone",
+    "tag": "Press to call"
+  },
+    {
+      "icon": "email.svg",
+      "link": "mailto:elena@neohealth.fi",
+      "name": "Email",
+      "tag": "elena@neohealth.fi"
+    },
+    {
+      "icon": "whatsapp.svg",
+      "link": "https://wa.me/358449184183",
+      "name": "WhatsApp",
+      "tag": "Press to message"
     }
   ]
-}
+}]

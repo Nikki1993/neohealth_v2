@@ -5,16 +5,23 @@
             <div class="w-full border-t-2 border-gray-300"></div>
         </div>
     </div>
-    <h3 class="text-center text-lg">{{.Contacts.Title}}</h3>
-        <div class="flex gap-10 justify-around flex-wrap py-5">
-            {{ range $social := .Contacts.Socials}}
-                <a class="font-light text-base flex gap-3" target="_blank" rel="noreferrer noopener" href={{$social.Link}}>
-                    <img class="w-8 h-auto text-red-900" alt={{$social.Icon}} src={{print "./static/icons/contact/" $social.Icon}} />
-                    <div class="flex flex-col justify-center">
-                        <h3 class="text-xs font-medium text-gray-800">{{$social.Name}}</h3>
-                        <span class="font-light break-all text-sm">{{$social.Tag}}</span>
-                    </div>
-                </a>
-            {{end}}
-        </div>
+    <div class="flex flex-wrap gap-6">
+        {{ range .Contacts }}
+            <div class="min-w-[12rem] flex-1 flex-wrap">
+                <h3 class="text-lg">{{.Title}}</h3>
+                <div class="flex gap-10 flex-wrap py-5 min-w-fit">
+                    {{ range .Socials}}
+                        <a class="font-light text-base flex gap-3" target="_blank" rel="noreferrer noopener" href={{.Link}}>
+                            <img class="w-8 h-auto text-red-900"
+                                 alt={{.Icon}} src={{print "./static/icons/contact/" .Icon}} />
+                            <div class="flex flex-col justify-center">
+                                <h3 class="text-xs font-medium text-gray-800">{{.Name}}</h3>
+                                <span class="font-light break-all text-sm">{{.Tag}}</span>
+                            </div>
+                        </a>
+                    {{end}}
+                </div>
+            </div>
+        {{end}}
+    </div>
 </footer>

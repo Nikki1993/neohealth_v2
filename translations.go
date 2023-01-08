@@ -77,7 +77,7 @@ type Website struct {
 	Services  [3]Card
 	Brands    Brands
 	About     About
-	Contacts  Contacts
+	Contacts  []Contacts
 }
 
 var matcher = language.NewMatcher([]language.Tag{
@@ -184,7 +184,7 @@ func GenerateTranslations(r *http.Request) (Website, error) {
 		return Website{}, err
 	}
 
-	contact, err := parseJSON(Contacts{}, "contact/"+ext)
+	contact, err := parseJSON([]Contacts{}, "contact/"+ext)
 	if err != nil {
 		return Website{}, err
 	}
