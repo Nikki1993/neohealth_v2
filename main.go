@@ -12,7 +12,7 @@ import (
 
 var staticPath = "/static/"
 
-//go:embed static/*
+//go:embed all:static/*
 var content embed.FS
 
 //go:embed all:templates/*

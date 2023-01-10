@@ -7,7 +7,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans:  ['Inter', ...defaultTheme.fontFamily.sans],
-        title: ['Caveat']
+        title: ['Caveat', ...defaultTheme.fontFamily.sans]
       }
     },
   },
