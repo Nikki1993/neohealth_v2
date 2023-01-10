@@ -12,7 +12,7 @@
                 <div class="flex gap-10 flex-wrap py-5 min-w-fit">
                     {{ range .Socials}}
                         <a class="font-light text-base flex gap-3" target="_blank" rel="noreferrer noopener" href={{.Link}}>
-                            <img class="w-8 h-auto text-red-900"
+                            <img loading="lazy" class="w-8 h-auto text-red-900"
                                  alt={{.Icon}} src={{print "./static/icons/contact/" .Icon}} />
                             <div class="flex flex-col justify-center">
                                 <h3 class="text-xs font-medium text-gray-800">{{.Name}}</h3>
