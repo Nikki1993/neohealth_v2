@@ -2,7 +2,6 @@ package main
 
 import (
 	"embed"
-	"fmt"
 	"html/template"
 	"io/fs"
 	"log"
@@ -58,14 +57,13 @@ func servePage(w http.ResponseWriter, r *http.Request) {
 
 func parseTemplates() (*template.Template, error) {
 	var filePaths []string
-
 	files, err := fs.ReadDir(templates, "templates")
 	if err != nil {
 		return nil, err
 	}
 
-	for _, file := range files {
-		filePaths = append(filePaths, fmt.Sprintf("templates/%v", file.Name()))
+	for i, file := range files {
+		filePaths[i] = "templates/" + file.Name()
 	}
 
 	tmpl, err := template.ParseFS(templates, filePaths...)

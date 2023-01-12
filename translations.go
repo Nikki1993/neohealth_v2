@@ -1,12 +1,10 @@
 package main
 
 import (
+	"embed"
 	"encoding/json"
-	"fmt"
 	"golang.org/x/text/language"
 	"html/template"
-	"io"
-	"log"
 	"net/http"
 	"os"
 	"strings"
@@ -65,7 +63,7 @@ type Social struct {
 	Tag  string       `json:"tag"`
 }
 
-type Contacts struct {
+type Contact struct {
 	Title   string   `json:"title"`
 	Socials []Social `json:"items"`
 }
@@ -77,7 +75,7 @@ type Website struct {
 	Services  [3]Card
 	Brands    Brands
 	About     About
-	Contacts  []Contacts
+	Contacts  []Contact
 }
 
 var matcher = language.NewMatcher([]language.Tag{
@@ -88,14 +86,18 @@ var matcher = language.NewMatcher([]language.Tag{
 	language.Russian,
 })
 
-var staticIconPath = "./static/icons/"
-var staticPathLanguages = staticIconPath + "languages"
-var staticPathBrands = staticIconPath + "brands"
+const staticIconPath = "./static/icons/"
+const staticPathLanguages = staticIconPath + "languages"
+const staticPathBrands = staticIconPath + "brands"
 
-func getLang(r *http.Request) (language.Tag, int) {
+//go:embed all:translations/*
+var translations embed.FS
+
+func getLang(r *http.Request) (string, string) {
 	query := r.URL.Query().Get("lang")
 	accept := r.Header.Get("Accept-Language")
-	return language.MatchStrings(matcher, query, accept)
+	tag, _ := language.MatchStrings(matcher, query, accept)
+	return tag.String(), getExtension(tag)
 }
 
 func getExtension(tag language.Tag) string {
@@ -110,19 +112,20 @@ func getExtension(tag language.Tag) string {
 }
 
 func generateLanguageLinks() ([]Language, error) {
-	var languages []Language
-
 	imgs, err := os.ReadDir(staticPathLanguages)
 	if err != nil {
 		return nil, err
 	}
 
+	languages := make([]Language, 0, len(imgs))
+
 	for _, img := range imgs {
-		imgName := strings.Split(img.Name(), ".")[0]
+		name := img.Name()
+		imgName := strings.ReplaceAll(name, ".", "")
 		languages = append(languages, Language{
-			Href: fmt.Sprintf("/?lang=%s", imgName),
+			Href: "/?lang=" + imgName,
 			Alt:  imgName,
-			Src:  fmt.Sprintf("%s/%s", staticPathLanguages, img.Name()),
+			Src:  staticPathLanguages + "/" + name,
 		})
 	}
 
@@ -130,12 +133,12 @@ func generateLanguageLinks() ([]Language, error) {
 }
 
 func generateBrandImgs() ([]string, error) {
-	var collection []string
-
 	imgs, err := os.ReadDir(staticPathBrands)
 	if err != nil {
 		return nil, err
 	}
+
+	collection := make([]string, 0, len(imgs))
 
 	for _, img := range imgs {
 		collection = append(collection, img.Name())
@@ -145,8 +148,7 @@ func generateBrandImgs() ([]string, error) {
 }
 
 func GenerateTranslations(r *http.Request) (Website, error) {
-	tag, _ := getLang(r)
-	ext := getExtension(tag)
+	tag, ext := getLang(r)
 
 	languages, err := generateLanguageLinks()
 	if err != nil {
@@ -159,12 +161,12 @@ func GenerateTranslations(r *http.Request) (Website, error) {
 		Bottom: "For your skin",
 	}
 
-	services, err := parseJSON([3]Card{}, "services/"+ext)
+	services, err := parseJSON[[3]Card]("services/" + ext)
 	if err != nil {
 		return Website{}, err
 	}
 
-	brands, err := parseJSON(Brands{}, "brands/"+ext)
+	brands, err := parseJSON[Brands]("brands/" + ext)
 	if err != nil {
 		return Website{}, err
 	}
@@ -174,23 +176,23 @@ func GenerateTranslations(r *http.Request) (Website, error) {
 		return Website{}, err
 	}
 
-	about, err := parseJSON(About{}, "about/"+ext)
+	about, err := parseJSON[About]("about/" + ext)
 	if err != nil {
 		return Website{}, err
 	}
 
-	about.Team, err = parseJSON([]Member{}, "team/"+ext)
+	about.Team, err = parseJSON[[]Member]("team/" + ext)
 	if err != nil {
 		return Website{}, err
 	}
 
-	contact, err := parseJSON([]Contacts{}, "contact/"+ext)
+	contact, err := parseJSON[[]Contact]("contact/" + ext)
 	if err != nil {
 		return Website{}, err
 	}
 
 	return Website{
-		Lang:      tag.String(),
+		Lang:      tag,
 		Languages: languages,
 		Intro:     intro,
 		Services:  services,
@@ -201,21 +203,10 @@ func GenerateTranslations(r *http.Request) (Website, error) {
 
 }
 
-func parseJSON[S any](res S, p string) (S, error) {
-	p = "./translations/" + p
-	file, err := os.Open(p)
-	if err != nil {
-		return res, err
-	}
+func parseJSON[S any](p string) (S, error) {
+	var res S
 
-	defer func(file *os.File) {
-		err := file.Close()
-		if err != nil {
-			log.Fatalln(err)
-		}
-	}(file)
-
-	bytes, err := io.ReadAll(file)
+	bytes, err := translations.ReadFile("translations/" + p)
 	if err != nil {
 		return res, err
 	}
