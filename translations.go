@@ -148,59 +148,54 @@ func generateBrandImgs() ([]string, error) {
 }
 
 func GenerateTranslations(r *http.Request) (Website, error) {
+	website := Website{}
 	tag, ext := getLang(r)
+	website.Lang = tag
 
 	languages, err := generateLanguageLinks()
 	if err != nil {
-		return Website{}, err
+		return website, err
 	}
 
-	intro := Intro{
+	website.Languages = languages
+
+	website.Intro = Intro{
 		Top:    "A new beginning",
 		Middle: "Neohealth",
 		Bottom: "For your skin",
 	}
 
-	services, err := parseJSON[[3]Card]("services/" + ext)
+	website.Services, err = parseJSON[[3]Card]("services/" + ext)
 	if err != nil {
-		return Website{}, err
+		return website, err
 	}
 
-	brands, err := parseJSON[Brands]("brands/" + ext)
+	website.Brands, err = parseJSON[Brands]("brands/" + ext)
 	if err != nil {
-		return Website{}, err
+		return website, err
 	}
 
-	brands.Imgs, err = generateBrandImgs()
+	website.Brands.Imgs, err = generateBrandImgs()
 	if err != nil {
-		return Website{}, err
+		return website, err
 	}
 
-	about, err := parseJSON[About]("about/" + ext)
+	website.About, err = parseJSON[About]("about/" + ext)
 	if err != nil {
-		return Website{}, err
+		return website, err
 	}
 
-	about.Team, err = parseJSON[[]Member]("team/" + ext)
+	website.About.Team, err = parseJSON[[]Member]("team/" + ext)
 	if err != nil {
-		return Website{}, err
+		return website, err
 	}
 
-	contact, err := parseJSON[[]Contact]("contact/" + ext)
+	website.Contacts, err = parseJSON[[]Contact]("contact/" + ext)
 	if err != nil {
-		return Website{}, err
+		return website, err
 	}
 
-	return Website{
-		Lang:      tag,
-		Languages: languages,
-		Intro:     intro,
-		Services:  services,
-		Brands:    brands,
-		About:     about,
-		Contacts:  contact,
-	}, nil
-
+	return website, nil
 }
 
 func parseJSON[S any](p string) (S, error) {

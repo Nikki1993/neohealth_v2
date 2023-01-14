@@ -6,6 +6,7 @@ import (
 	"io/fs"
 	"log"
 	"net/http"
+	_ "net/http/pprof"
 	"path/filepath"
 )
 
@@ -56,14 +57,15 @@ func servePage(w http.ResponseWriter, r *http.Request) {
 }
 
 func parseTemplates() (*template.Template, error) {
-	var filePaths []string
 	files, err := fs.ReadDir(templates, "templates")
 	if err != nil {
 		return nil, err
 	}
 
-	for i, file := range files {
-		filePaths[i] = "templates/" + file.Name()
+	filePaths := make([]string, 0, len(files))
+
+	for _, file := range files {
+		filePaths = append(filePaths, "templates/"+file.Name())
 	}
 
 	tmpl, err := template.ParseFS(templates, filePaths...)
