@@ -53,7 +53,7 @@ type About struct {
 	Description string `json:"description"`
 	Button      string `json:"button"`
 	Extended    string `json:"extended"`
-	Team        []Member
+	Team        [1]Member
 }
 
 type Social struct {
@@ -75,7 +75,7 @@ type Website struct {
 	Services  [3]Card
 	Brands    Brands
 	About     About
-	Contacts  []Contact
+	Contacts  [2]Contact
 }
 
 var matcher = language.NewMatcher([]language.Tag{
@@ -170,11 +170,6 @@ func GenerateTranslations(r *http.Request) (Website, error) {
 		return website, err
 	}
 
-	website.Brands, err = parseJSON[Brands]("brands/" + ext)
-	if err != nil {
-		return website, err
-	}
-
 	website.Brands.Imgs, err = generateBrandImgs()
 	if err != nil {
 		return website, err
@@ -185,12 +180,12 @@ func GenerateTranslations(r *http.Request) (Website, error) {
 		return website, err
 	}
 
-	website.About.Team, err = parseJSON[[]Member]("team/" + ext)
+	website.About.Team, err = parseJSON[[1]Member]("team/" + ext)
 	if err != nil {
 		return website, err
 	}
 
-	website.Contacts, err = parseJSON[[]Contact]("contact/" + ext)
+	website.Contacts, err = parseJSON[[2]Contact]("contact/" + ext)
 	if err != nil {
 		return website, err
 	}
