@@ -20,12 +20,25 @@ var content embed.FS
 var templates embed.FS
 
 var tmpl = template.Must(parseTemplates())
+var web = map[string]Website{
+	"en": {},
+	"fi": {},
+	"ru": {},
+}
 
 type neuteredFileSystem struct {
 	fs http.FileSystem
 }
 
 func main() {
+	for k, _ := range web {
+		t, err := GenerateTranslations(k)
+		if err != nil {
+			panic(err)
+		}
+
+		web[k] = t
+	}
 
 	r := chi.NewRouter()
 	r.Use(middleware.Compress(5))
@@ -34,6 +47,8 @@ func main() {
 	r.Use(middleware.Logger)
 	r.Use(middleware.Recoverer)
 	r.Use(middleware.Timeout(60 * time.Second))
+
+	r.Mount("/debug", middleware.Profiler())
 
 	cont, err := fs.Sub(fs.FS(content), "static")
 	if err != nil {
@@ -52,12 +67,7 @@ func main() {
 }
 
 func servePage(w http.ResponseWriter, r *http.Request) {
-	web, err := GenerateTranslations(r)
-	if err != nil {
-		log.Fatalln(err)
-	}
-
-	err = tmpl.ExecuteTemplate(w, "index.gohtml", web)
+	err := tmpl.ExecuteTemplate(w, "index.gohtml", web[getLang(r)])
 	if err != nil {
 		log.Fatalln(err)
 	}

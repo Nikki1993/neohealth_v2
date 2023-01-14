@@ -93,21 +93,18 @@ const staticPathBrands = staticIconPath + "brands"
 //go:embed all:translations/*
 var translations embed.FS
 
-func getLang(r *http.Request) (string, string) {
+func getLang(r *http.Request) string {
 	query := r.URL.Query().Get("lang")
 	accept := r.Header.Get("Accept-Language")
 	tag, _ := language.MatchStrings(matcher, query, accept)
-	return tag.String(), getExtension(tag)
-}
 
-func getExtension(tag language.Tag) string {
 	switch tag {
 	case language.Finnish:
-		return "fi.json"
+		return "fi"
 	case language.Russian:
-		return "ru.json"
+		return "ru"
 	default:
-		return "en.json"
+		return "en"
 	}
 }
 
@@ -147,10 +144,9 @@ func generateBrandImgs() ([]string, error) {
 	return collection, nil
 }
 
-func GenerateTranslations(r *http.Request) (Website, error) {
+func GenerateTranslations(lang string) (Website, error) {
 	website := Website{}
-	tag, ext := getLang(r)
-	website.Lang = tag
+	website.Lang = lang
 
 	languages, err := generateLanguageLinks()
 	if err != nil {
@@ -164,6 +160,8 @@ func GenerateTranslations(r *http.Request) (Website, error) {
 		Middle: "Neohealth",
 		Bottom: "For your skin",
 	}
+
+	ext := lang + ".json"
 
 	website.Services, err = parseJSON[[3]Card]("services/" + ext)
 	if err != nil {
