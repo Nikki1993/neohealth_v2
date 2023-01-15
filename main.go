@@ -9,12 +9,13 @@ import (
 	"log"
 	"net/http"
 	_ "net/http/pprof"
+	"path"
 	"path/filepath"
 	"time"
 )
 
 //go:embed all:static/*
-var content embed.FS
+var Content embed.FS
 
 //go:embed all:templates/*
 var templates embed.FS
@@ -50,7 +51,7 @@ func main() {
 
 	r.Mount("/debug", middleware.Profiler())
 
-	cont, err := fs.Sub(fs.FS(content), "static")
+	cont, err := fs.Sub(fs.FS(Content), "static")
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -58,7 +59,7 @@ func main() {
 	static := http.StripPrefix("/static/", http.FileServer(neuteredFileSystem{http.FS(cont)}))
 
 	r.Handle("/static/*", static)
-	r.HandleFunc("/", servePage)
+	r.HandleFunc("/", serveWebpage)
 
 	err = http.ListenAndServe(":1234", r)
 	if err != nil {
@@ -66,7 +67,7 @@ func main() {
 	}
 }
 
-func servePage(w http.ResponseWriter, r *http.Request) {
+func serveWebpage(w http.ResponseWriter, r *http.Request) {
 	err := tmpl.ExecuteTemplate(w, "index.gohtml", web[getLang(r)])
 	if err != nil {
 		log.Fatalln(err)
@@ -93,8 +94,8 @@ func parseTemplates() (*template.Template, error) {
 	return tmpl, nil
 }
 
-func (n neuteredFileSystem) Open(path string) (http.File, error) {
-	f, err := n.fs.Open(path)
+func (n neuteredFileSystem) Open(p string) (http.File, error) {
+	f, err := n.fs.Open(path.Clean(p))
 	if err != nil {
 		return nil, err
 	}
@@ -105,9 +106,7 @@ func (n neuteredFileSystem) Open(path string) (http.File, error) {
 	}
 
 	if s.IsDir() {
-		fpath := filepath.Join(path, "index.html")
-		if _, err := n.fs.Open(fpath); err != nil {
-
+		if _, err := n.fs.Open(filepath.Join(p, "index.html")); err != nil {
 			fileError := f.Close()
 			if fileError != nil {
 				return nil, fileError

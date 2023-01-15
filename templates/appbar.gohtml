@@ -1,6 +1,15 @@
-<nav class="flex justify-end h-18 p-2">
+<nav class="flex justify-between h-18 p-2">
+    <h1 class="text-4xl font-thin text-white">{{.Intro.Middle}}</h1>
+    <div class="flex">
+        {{ range $img := .Languages  }}
+            <a class="p-2" href="{{$img.Href}}">
+                <img loading="lazy"
+                     width="24"
+                     height="24"
+                     src="{{$img.Src}}"
+                     alt="{{$img.Alt}}"/>
+            </a>
+        {{ end }}
+    </div>
     {{- /*gotype: neohealth.Website*/ -}}
-    {{ range $img := .Languages  }}
-        <a class="p-2" href={{$img.Href}}><img loading="lazy" width="24" height="24" src={{$img.Src}} alt={{$img.Alt}}/></a>
-    {{ end }}
 </nav>

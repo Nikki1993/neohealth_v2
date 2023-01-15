@@ -6,7 +6,6 @@ import (
 	"golang.org/x/text/language"
 	"html/template"
 	"net/http"
-	"os"
 	"strings"
 )
 
@@ -86,7 +85,7 @@ var matcher = language.NewMatcher([]language.Tag{
 	language.Russian,
 })
 
-const staticIconPath = "./static/icons/"
+const staticIconPath = "static/icons/"
 const staticPathLanguages = staticIconPath + "languages"
 const staticPathBrands = staticIconPath + "brands"
 
@@ -109,7 +108,7 @@ func getLang(r *http.Request) string {
 }
 
 func generateLanguageLinks() ([]Language, error) {
-	imgs, err := os.ReadDir(staticPathLanguages)
+	imgs, err := Content.ReadDir(staticPathLanguages)
 	if err != nil {
 		return nil, err
 	}
@@ -118,7 +117,7 @@ func generateLanguageLinks() ([]Language, error) {
 
 	for _, img := range imgs {
 		name := img.Name()
-		imgName := strings.ReplaceAll(name, ".", "")
+		imgName := strings.ReplaceAll(name, ".svg", "")
 		languages = append(languages, Language{
 			Href: "/?lang=" + imgName,
 			Alt:  imgName,
@@ -130,7 +129,7 @@ func generateLanguageLinks() ([]Language, error) {
 }
 
 func generateBrandImgs() ([]string, error) {
-	imgs, err := os.ReadDir(staticPathBrands)
+	imgs, err := Content.ReadDir(staticPathBrands)
 	if err != nil {
 		return nil, err
 	}
