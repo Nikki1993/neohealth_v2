@@ -168,17 +168,12 @@ func GenerateTranslations(lang string) (Website, error) {
 		return website, err
 	}
 
+	website.Brands, err = parseJSON[Brands]("brands/" + ext)
+	if err != nil {
+		return website, err
+	}
+
 	website.Brands.Imgs, err = generateBrandImgs()
-	if err != nil {
-		return website, err
-	}
-
-	website.About, err = parseJSON[About]("about/" + ext)
-	if err != nil {
-		return website, err
-	}
-
-	website.About.Team, err = parseJSON[[1]Member]("team/" + ext)
 	if err != nil {
 		return website, err
 	}
