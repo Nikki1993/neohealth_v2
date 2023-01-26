@@ -49,8 +49,6 @@ func main() {
 	r.Use(middleware.Recoverer)
 	r.Use(middleware.Timeout(60 * time.Second))
 
-	r.Mount("/debug", middleware.Profiler())
-
 	cont, err := fs.Sub(fs.FS(Content), "static")
 	if err != nil {
 		log.Fatalln(err)
