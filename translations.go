@@ -75,6 +75,7 @@ type Footer struct {
 }
 
 type Website struct {
+	Css       template.URL
 	Lang      string
 	Languages []Language
 	Intro     Intro

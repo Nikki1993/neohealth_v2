@@ -11,6 +11,7 @@ import (
 	_ "net/http/pprof"
 	"path"
 	"path/filepath"
+	"strings"
 	"time"
 )
 
@@ -32,12 +33,26 @@ type neuteredFileSystem struct {
 }
 
 func main() {
+	dir, err := Content.ReadDir("static")
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	css := "static/output.css"
+
+	for _, entry := range dir {
+		if strings.Contains(entry.Name(), "style") {
+			css = "static/" + entry.Name()
+		}
+	}
+
 	for k, _ := range web {
 		t, err := GenerateTranslations(k)
 		if err != nil {
 			panic(err)
 		}
 
+		t.Css = template.URL(css)
 		web[k] = t
 	}
 
