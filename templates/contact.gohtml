@@ -1,21 +1,27 @@
-<footer class="flex flex-col gap-6">
+<footer class="flex flex-col gap-4">
     <div class="relative">
         <div class="absolute inset-0 flex items-center" aria-hidden="true">
             <div class="w-full border-t-2 border-gray-300"></div>
         </div>
     </div>
-    {{- /*gotype: neohealth.Contact*/ -}}
-    <h3 class="text-lg">{{.Title}}</h3>
-    <div class="flex flex-col gap-5">
-        {{ range .Socials}}
-            <a class="font-light text-base flex" target="_blank" rel="noreferrer" href={{.Link}}>
-                <img loading="lazy" width="32" height="36.570" class="mr-3 w-8 h-auto text-red-900"
-                     alt={{.Icon}} src={{print "./static/icons/contact/" .Icon}} />
-                <div class="flex flex-col justify-center">
-                    <h3 class="text-xs font-medium text-gray-800">{{.Name}}</h3>
-                    <span class="font-light break-all text-sm">{{.Tag}}</span>
-                </div>
+    {{- /*gotype: neohealth.Footer*/ -}}
+    <h3 class="text-center text-lg">{{.Title}}</h3>
+    <div class="flex flex-col gap-3 items-center sm:gap-0 sm:flex-row sm:justify-between">
+        <div class="flex gap-3">
+            {{ range .Socials}}
+                <a class="font-light text-base flex" target="_blank" rel="noreferrer" href={{.Link}}>
+                    <img loading="lazy" width="32" height="36.570" class="mr-3 w-8 h-auto text-red-900"
+                         alt={{.Icon}} src={{print "./static/icons/contact/" .Icon}} />
+                </a>
+            {{end}}
+        </div>
+        <div class="flex flex-col gap-3 sm:flex-row">
+            {{ range .Contact}}
+            <a target="_blank" rel="noreferrer" href="{{.Link}}" class="flex flex-col justify-center">
+                <h3 class="text-xs font-medium text-gray-800">{{.Name}}</h3>
+                <span class="font-light break-all text-sm">{{.Tag}}</span>
             </a>
-        {{end}}
+            {{end}}
+        </div>
     </div>
 </footer>
