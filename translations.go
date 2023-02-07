@@ -63,8 +63,8 @@ type Social struct {
 }
 
 type Contact struct {
-	Title   string   `json:"title"`
-	Socials []Social `json:"items"`
+	Title   string    `json:"title"`
+	Socials [6]Social `json:"items"`
 }
 
 type Website struct {
@@ -74,7 +74,7 @@ type Website struct {
 	Services  [3]Card
 	Brands    Brands
 	About     About
-	Contacts  [2]Contact
+	Contacts  Contact
 }
 
 var matcher = language.NewMatcher([]language.Tag{
@@ -177,7 +177,7 @@ func GenerateTranslations(lang string) (Website, error) {
 		return website, err
 	}
 
-	website.Contacts, err = parseJSON[[2]Contact]("contact/" + ext)
+	website.Contacts, err = parseJSON[Contact]("contact/" + ext)
 	if err != nil {
 		return website, err
 	}

@@ -1,4 +1,5 @@
-[{
+{
+  "title": "Find us & Reach Us",
   "items": [
     {
       "icon": "facebook.svg",
@@ -17,17 +18,13 @@
       "link": "https://goo.gl/maps/q6caMcBGkqy",
       "name": "Address",
       "tag": "Munkkisaarenkatu 2"
-    }
-  ],
-  "title": "Find Us"
-}, {
-  "title": "Reach Us",
-  "items": [{
-    "icon": "phone.svg",
-    "link": "tel:0449184183",
-    "name": "Phone",
-    "tag": "Press to call"
-  },
+    },
+    {
+      "icon": "phone.svg",
+      "link": "tel:0449184183",
+      "name": "Phone",
+      "tag": "0449184183"
+    },
     {
       "icon": "email.svg",
       "link": "mailto:elena@neohealth.fi",
@@ -41,4 +38,4 @@
       "tag": "Press to message"
     }
   ]
-}]
+}
