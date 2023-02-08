@@ -4,6 +4,7 @@ import (
 	"embed"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
+	"github.com/go-chi/cors"
 	"html/template"
 	"io/fs"
 	"log"
@@ -57,6 +58,14 @@ func main() {
 	}
 
 	r := chi.NewRouter()
+	r.Use(cors.Handler(cors.Options{
+		AllowedOrigins:   []string{"https://*"},
+		AllowedMethods:   []string{"GET"},
+		AllowedHeaders:   []string{"Accept", "Content-Type", "X-CSRF-Token"},
+		ExposedHeaders:   []string{"Link"},
+		AllowCredentials: false,
+		MaxAge:           300,
+	}))
 	r.Use(middleware.Compress(5))
 	r.Use(middleware.RequestID)
 	r.Use(middleware.RealIP)
@@ -69,7 +78,7 @@ func main() {
 		log.Fatalln(err)
 	}
 
-	static := http.StripPrefix("/static/", http.FileServer(neuteredFileSystem{http.FS(cont)}))
+	static := http.StripPrefix("/static/", Cache(http.FileServer(neuteredFileSystem{http.FS(cont)})))
 
 	r.Handle("/static/*", static)
 	r.HandleFunc("/", serveWebpage)
@@ -105,6 +114,15 @@ func parseTemplates() (*template.Template, error) {
 	}
 
 	return tmpl, nil
+}
+
+func Cache(h http.Handler) http.Handler {
+	fn := func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Cache-Control", "max-age=604800")
+		h.ServeHTTP(w, r)
+	}
+
+	return http.HandlerFunc(fn)
 }
 
 func (n neuteredFileSystem) Open(p string) (http.File, error) {
