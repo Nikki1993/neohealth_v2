@@ -121,6 +121,7 @@ func main() {
 }
 
 func serveWebpage(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Cache-Control", "no-cache")
 	err := tmpl.ExecuteTemplate(w, "index.gohtml", web[getLang(r)])
 	if err != nil {
 		log.Fatalln(err)
@@ -151,7 +152,7 @@ func Cache(h http.Handler) http.Handler {
 	fn := func(w http.ResponseWriter, r *http.Request) {
 		s := strings.Split(r.URL.String(), "/")
 		etag := md5sums[s[len(s)-1]]
-		w.Header().Set("Cache-Control", "max-age=604800")
+		w.Header().Set("Cache-Control", "max-age=43200")
 		w.Header().Set("ETag", etag)
 
 		if match := r.Header.Get("If-None-Match"); match != "" {
