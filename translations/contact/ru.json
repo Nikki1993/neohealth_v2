@@ -1,6 +1,20 @@
 {
   "title": "Find us & Reach Us",
-  "items": [
+  "contacts": [
+    {
+      "icon": "phone.svg",
+      "link": "tel:0449184183",
+      "name": "Phone",
+      "tag": "0449184183"
+    },
+    {
+      "icon": "email.svg",
+      "link": "mailto:elena@neohealth.fi",
+      "name": "Email",
+      "tag": "elena@neohealth.fi"
+    }
+  ],
+  "socials": [
     {
       "icon": "facebook.svg",
       "link": "https://facebook.com/neohealthhelsinki/",
