@@ -1,4 +1,5 @@
 .idea
+credentials.json
 node_modules
 build
 static/output.css
