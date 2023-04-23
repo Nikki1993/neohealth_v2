@@ -2,10 +2,11 @@
 <!DOCTYPE html>
 <html lang={{.Lang}}>
     {{template "head.gohtml" .Css}}
-    <body x-data="modal" class="max-w-screen-xl mx-auto bg-gray-200 flex flex-col gap-32 p-2">
+    <body x-data class="max-w-screen-xl mx-auto bg-gray-200 flex flex-col gap-32 p-2">
         {{template "appbar.gohtml" .}}
         {{template "home.gohtml" .Intro }}
         {{template "services.gohtml" .Services}}
+        {{template "booking.gohtml" .Services}}
         {{template "brands.gohtml" .Brands}}
         {{template "contact.gohtml" .Footer}}
     </body>
@@ -13,8 +14,17 @@
 <script>
     document.addEventListener('alpine:init', () => {
         const meta = document.head.querySelector('meta[name="theme-color"]');
+        const serviceList = document.getElementById("serviceSelector")
 
-        Alpine.data('modal', () => ({
+        Alpine.store('state', {
+            open: false,
+            selected: undefined,
+            init() {
+                window.addEventListener("click", (evt) => {
+                    if (!evt.composedPath().includes(serviceList)) this.closeServiceSelector()
+                })
+
+            },
             openModal(ref) {
                 meta.setAttribute("content", "#000")
                 ref.show()
@@ -22,7 +32,18 @@
             closeModal(ref) {
                 meta.setAttribute("content", "#1b2532")
                 ref.close()
-            }
-        }))
+            },
+            toggleOpen() {
+                this.open = !this.open
+            },
+            setSelected(ref) {
+                this.selected = ref.innerText.trim();
+                this.closeServiceSelector()
+                fetch("/availableTimes", { method: "GET" })
+            },
+            closeServiceSelector() {
+                this.open = false
+            },
+        })
     })
 </script>

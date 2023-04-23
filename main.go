@@ -1,17 +1,19 @@
 package main
 
 import (
+	"context"
 	"crypto/md5"
 	"embed"
 	"encoding/hex"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 	"github.com/go-chi/cors"
+	"google.golang.org/api/calendar/v3"
+	"google.golang.org/api/option"
 	"html/template"
 	"io/fs"
 	"log"
 	"net/http"
-	_ "net/http/pprof"
 	"path"
 	"path/filepath"
 	"strings"
@@ -23,6 +25,9 @@ var Content embed.FS
 
 //go:embed all:templates/*
 var templates embed.FS
+
+//go:embed credentials.json
+var creds []byte
 
 var tmpl = template.Must(parseTemplates())
 var web = map[string]Website{
@@ -62,16 +67,51 @@ func generateMD5sums(path string, sums *map[string]string) {
 	}
 }
 
+func makeBooking(w http.ResponseWriter, r *http.Request, g *calendar.Service) {
+	events, err := g.Events.List("").Do()
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	_, err = w.Write([]byte(events.Summary))
+	if err != nil {
+		log.Fatalln(err)
+	}
+}
+
+func availableTimes(w http.ResponseWriter, r *http.Request, g *calendar.Service) {
+	items := []*calendar.FreeBusyRequestItem{{Id: ""}}
+	min := time.Now()
+	max := min.AddDate(0, 0, 7)
+	query := &calendar.FreeBusyRequest{
+		Items:   items,
+		TimeMax: max.Format(time.RFC3339),
+		TimeMin: min.Format(time.RFC3339),
+	}
+	freebusy, err := g.Freebusy.Query(query).Do()
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	for _, val := range freebusy.Calendars {
+		log.Println(val.Busy)
+	}
+}
+
 func main() {
+	ctx := context.Background()
+	googleCalendar, err := calendar.NewService(ctx, option.WithCredentialsJSON(creds))
+	if err != nil {
+		log.Fatalf("Unable to obtain google googleCalendar service: %v\n", err)
+	}
+
 	dir, err := Content.ReadDir("static")
 	if err != nil {
 		log.Fatalln(err)
 	}
 
 	generateMD5sums("static", &md5sums)
-
 	css := "static/output.css"
-
 	for _, entry := range dir {
 		if strings.Contains(entry.Name(), "style") {
 			css = "static/" + entry.Name()
@@ -99,10 +139,16 @@ func main() {
 	}))
 	r.Use(middleware.Compress(5))
 	r.Use(middleware.RequestID)
-	r.Use(middleware.RealIP)
 	//r.Use(middleware.Logger)
 	r.Use(middleware.Recoverer)
 	r.Use(middleware.Timeout(60 * time.Second))
+
+	r.Post("/booking", func(w http.ResponseWriter, r *http.Request) {
+		makeBooking(w, r, googleCalendar)
+	})
+	r.Get("/availableTimes", func(w http.ResponseWriter, r *http.Request) {
+		availableTimes(w, r, googleCalendar)
+	})
 
 	cont, err := fs.Sub(fs.FS(Content), "static")
 	if err != nil {
