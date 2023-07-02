@@ -8,7 +8,7 @@
         <ul class="flex-1 grid grid-cols-2 lg:grid-cols-3 gap-1">
             {{ range .Imgs }}
                 <li class="col-span-1 flex justify-center py-2 px-2">
-                    <img loading="lazy" class="max-h-16 object-cover object-scale-down" alt={{.}} src={{print "./static/icons/brands/" .}}>
+                    <img loading="lazy" class="max-h-16 object-scale-down" alt="{{.}}" src="{{print "./static/icons/brands/" .}}">
                 </li>
             {{ end }}
         </ul>
