@@ -4,7 +4,7 @@
         <div class="h-full flex flex-col justify-between bg-white p-4 gap-3 shadow rounded overflow-hidden">
             <div class="flex flex-col gap-3">
                 <div class="flex items-center">
-                    <img loading="lazy" width="96" height="96" class="w-24 h-auto" alt={{.Icon}} src={{print "./static/icons/services/" .Icon}} />
+                    <img loading="lazy" width="96" height="96" class="w-24 h-auto" alt="{{.Icon}}" src="{{print "./static/icons/services/" .Icon}}" />
                     <div class="ml-4">
                         <h2 class="text-xl font-medium">{{.Title}}</h2>
                         <h3 class="text-sm font-light text-gray-900">{{.SubTitle}}</h3>
@@ -13,7 +13,7 @@
                 <p class="leading-6 text-sm font-light">{{.Description}}</p>
 
             </div>
-            <button class="text-left text-base font-medium text-indigo-600 bg-gray-50 -m-4 p-4 mt-1 text-center"
+            <button class="text-base font-medium text-indigo-600 bg-gray-50 -m-4 p-4 mt-1 text-center"
                     @click={{print "openModal($refs." .Title ")"}}>See Price
             </button>
         </div>
