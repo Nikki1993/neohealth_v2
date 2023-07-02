@@ -114,7 +114,7 @@ func main() {
 	r.Handle("/static/*", static)
 	r.HandleFunc("/", serveWebpage)
 
-	err = http.ListenAndServe(":1234", r)
+	err = http.ListenAndServe("localhost:1234", r)
 	if err != nil {
 		log.Fatalln("Error starting server on port :1234")
 	}
