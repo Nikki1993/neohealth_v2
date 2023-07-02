@@ -4,7 +4,7 @@
     "subtitle": "Päävalikko",
     "title": "Kasvot",
     "buttonOpen": "Katso Hinnat",
-    "buttonClose": "Sulkea",
+    "buttonClose": "Sulje",
     "prices": [
       {
         "price": "85.00",
@@ -97,7 +97,7 @@
   {
     "subtitle": "Aika on tullut",
     "buttonOpen": "Katso Hinnat",
-    "buttonClose": "Sulkea",
+    "buttonClose": "Sulje",
     "prices": [
       {
         "description": "Vartalo-mesoterapia, mukaan lukien selluliitti-, lifting ja lipolyyttiset hoitot.",
@@ -144,7 +144,7 @@
     "title": "Kädet",
     "icon": "lotion.svg",
     "buttonOpen": "Katso Hinnat",
-    "buttonClose": "Sulkea",
+    "buttonClose": "Sulje",
     "prices": [
       {
         "name": "Peeling",
