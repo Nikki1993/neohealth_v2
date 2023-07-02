@@ -14,7 +14,7 @@
 
             </div>
             <button class="text-base font-medium text-indigo-600 bg-gray-50 -m-4 p-4 mt-1 text-center"
-                    @click={{print "openModal($refs." .Title ")"}}>{{.ButtonText}}
+                    @click={{print "openModal($refs." .Title ")"}}>{{.ButtonOpen}}
             </button>
         </div>
         <dialog class="fixed max-h-[calc(100vh_-_10rem)] w-[98%] overflow-auto max-w-screen-lg inset-0 m-auto rounded shadow-2xl z-20"
@@ -35,7 +35,7 @@
                     {{ end }}
                 </ol>
                 <button class="sticky bottom-0 h-fit w-full text-center bg-indigo-600 p-4 text-white z-0 rounded"
-                        @click={{print "closeModal($refs." .Title ")"}}>Close
+                        @click={{print "closeModal($refs." .Title ")"}}>{{.ButtonClose}}
                 </button>
         </dialog>
     {{end}}

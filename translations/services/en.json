@@ -3,7 +3,8 @@
     "title": "Face",
     "description": "Any face treatment includes consultation from the specialist about the skin type, cleansing and final step in regards to the skin type using only EU certified products",
     "icon": "facial-treatment.svg",
-    "buttonText": "See Prices",
+    "buttonOpen": "See Prices",
+    "buttonClose": "Close",
     "prices": [
       {
         "description": "Cleanse, face & neck massage, final skin treatment depending on the type of skin",
@@ -97,7 +98,8 @@
     "title": "Body",
     "description": "All that your body will ever need to make you feel amazing using latest technologies. It includes consultation from the specialist and personalized program",
     "icon": "depilation.svg",
-    "buttonText": "See Prices",
+    "buttonOpen": "See Prices",
+    "buttonClose": "Close",
     "prices": [
       {
         "description": "Mesotherapy point-by-point of the body, depending on the skin type. (Various medicine: anti-cellulite, lipolytic, silicium, firming cocktail, etc.)",
@@ -141,7 +143,8 @@
     "title": "Hands",
     "description": "Hand treatment may be chosen as an addition to any face or body treatment and is not mandatory but pleasant part of the overall care",
     "icon": "lotion.svg",
-    "buttonText": "See Prices",
+    "buttonOpen": "See Prices",
+    "buttonClose": "Close",
     "prices": [
       {
         "description": "Chemical peeling with various acids depending on the skin type",

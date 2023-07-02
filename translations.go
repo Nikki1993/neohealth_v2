@@ -21,7 +21,8 @@ type Card struct {
 	Description string    `json:"description"`
 	Icon        string    `json:"icon"`
 	Services    []Service `json:"prices"`
-	ButtonText  string    `json:"buttonText"`
+	ButtonOpen  string    `json:"buttonOpen"`
+	ButtonClose string    `json:"buttonClose"`
 }
 
 type Language struct {

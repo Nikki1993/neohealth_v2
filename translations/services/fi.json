@@ -3,7 +3,8 @@
     "description": "Kaikki kasvohoidot sisältävät erityisasiantuntijan konsultaation, alkupuhdistuksen ja loppuvoitteet ja/tai tehotuotteet ihotyypin mukaan.",
     "subtitle": "Päävalikko",
     "title": "Kasvot",
-    "buttonText": "Katso Hinnat",
+    "buttonOpen": "Katso Hinnat",
+    "buttonClose": "Sulkea",
     "prices": [
       {
         "price": "85.00",
@@ -95,7 +96,8 @@
   },
   {
     "subtitle": "Aika on tullut",
-    "buttonText": "Katso Hinnat",
+    "buttonOpen": "Katso Hinnat",
+    "buttonClose": "Sulkea",
     "prices": [
       {
         "description": "Vartalo-mesoterapia, mukaan lukien selluliitti-, lifting ja lipolyyttiset hoitot.",
@@ -141,7 +143,8 @@
     "subtitle": "Kirsikka kakun päällä",
     "title": "Kädet",
     "icon": "lotion.svg",
-    "buttonText": "Katso Hinnat",
+    "buttonOpen": "Katso Hinnat",
+    "buttonClose": "Sulkea",
     "prices": [
       {
         "name": "Peeling",
