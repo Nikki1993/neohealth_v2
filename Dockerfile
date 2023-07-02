@@ -6,8 +6,6 @@ WORKDIR /app
 
 COPY . /app
 
-ENV env=production
-
 RUN go mod download
 RUN npm install
 RUN ./build.sh

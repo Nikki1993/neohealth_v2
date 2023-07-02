@@ -12,7 +12,6 @@ import (
 	"log"
 	"net/http"
 	_ "net/http/pprof"
-	"os"
 	"path"
 	"path/filepath"
 	"strings"
@@ -115,12 +114,7 @@ func main() {
 	r.Handle("/static/*", static)
 	r.HandleFunc("/", serveWebpage)
 
-	host := "localhost:1234"
-	if os.Getenv("env") == "production" {
-		host = ":1234"
-	}
-
-	err = http.ListenAndServe(host, r)
+	err = http.ListenAndServe("localhost:1234", r)
 	if err != nil {
 		log.Fatalln("Error starting server on port :1234")
 	}
