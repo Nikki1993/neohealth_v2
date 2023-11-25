@@ -123,16 +123,15 @@ func generateLanguageLinks() ([]Language, error) {
 		return nil, err
 	}
 
-	languages := make([]Language, 0, len(imgs))
-
-	for _, img := range imgs {
+	languages := make([]Language, len(imgs))
+	for i, img := range imgs {
 		name := img.Name()
 		imgName := strings.ReplaceAll(name, ".svg", "")
-		languages = append(languages, Language{
+		languages[i] = Language{
 			Href: "/?lang=" + imgName,
 			Alt:  imgName,
 			Src:  staticPathLanguages + "/" + name,
-		})
+		}
 	}
 
 	return languages, nil
@@ -144,18 +143,23 @@ func generateBrandImgs() ([]string, error) {
 		return nil, err
 	}
 
-	collection := make([]string, 0, len(imgs))
-
-	for _, img := range imgs {
-		collection = append(collection, img.Name())
+	collection := make([]string, len(imgs))
+	for i, img := range imgs {
+		collection[i] = img.Name()
 	}
 
 	return collection, nil
 }
 
 func GenerateTranslations(lang string) (Website, error) {
-	website := Website{}
-	website.Lang = lang
+	website := Website{
+		Lang: lang,
+		Intro: Intro{
+			Top:    "A new beginning",
+			Middle: "Neohealth",
+			Bottom: "For your skin",
+		},
+	}
 
 	languages, err := generateLanguageLinks()
 	if err != nil {
@@ -163,15 +167,7 @@ func GenerateTranslations(lang string) (Website, error) {
 	}
 
 	website.Languages = languages
-
-	website.Intro = Intro{
-		Top:    "A new beginning",
-		Middle: "Neohealth",
-		Bottom: "For your skin",
-	}
-
 	ext := lang + ".json"
-
 	website.Services, err = parseJSON[[3]Card]("services/" + ext)
 	if err != nil {
 		return website, err

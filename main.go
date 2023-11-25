@@ -40,8 +40,7 @@ type neuteredFileSystem struct {
 func generateMD5sums(path string, sums *map[string]string) {
 	dir, err := Content.ReadDir(path)
 	if err != nil {
-		log.Println(err)
-		return
+		log.Fatalf("Error reading directory to generate hashes %s", err)
 	}
 
 	for _, entry := range dir {
@@ -53,11 +52,14 @@ func generateMD5sums(path string, sums *map[string]string) {
 
 		file, err := Content.ReadFile(path + "/" + name)
 		if err != nil {
-			log.Println(err)
-			continue
+			log.Fatalf("Error reading file to generate hash %v", err)
 		}
 
-		hash.Write(file)
+		_, err = hash.Write(file)
+		if err != nil {
+			log.Fatalf("Error writing file hash to hashmap %v", err)
+		}
+
 		(*sums)[name] = hex.EncodeToString(hash.Sum(nil))
 	}
 }
@@ -65,20 +67,22 @@ func generateMD5sums(path string, sums *map[string]string) {
 func main() {
 	dir, err := Content.ReadDir("static")
 	if err != nil {
-		log.Fatalln(err)
+		panic(err)
 	}
 
 	generateMD5sums("static", &md5sums)
-
 	css := "static/output.css"
 
 	for _, entry := range dir {
-		if strings.Contains(entry.Name(), "style") {
-			css = "static/" + entry.Name()
+		if !strings.Contains(entry.Name(), "style") {
+			continue
 		}
+
+		css = "static/" + entry.Name()
+		break
 	}
 
-	for k, _ := range web {
+	for k := range web {
 		t, err := GenerateTranslations(k)
 		if err != nil {
 			panic(err)
@@ -98,15 +102,12 @@ func main() {
 		MaxAge:           300,
 	}))
 	r.Use(middleware.Compress(5))
-	r.Use(middleware.RequestID)
-	r.Use(middleware.RealIP)
-	//r.Use(middleware.Logger)
 	r.Use(middleware.Recoverer)
 	r.Use(middleware.Timeout(60 * time.Second))
 
 	cont, err := fs.Sub(fs.FS(Content), "static")
 	if err != nil {
-		log.Fatalln(err)
+		panic(err)
 	}
 
 	static := http.StripPrefix("/static/", Cache(http.FileServer(neuteredFileSystem{http.FS(cont)})))
@@ -134,10 +135,10 @@ func parseTemplates() (*template.Template, error) {
 		return nil, err
 	}
 
-	filePaths := make([]string, 0, len(files))
-
-	for _, file := range files {
-		filePaths = append(filePaths, "templates/"+file.Name())
+	s := len(files)
+	filePaths := make([]string, s)
+	for i, file := range files {
+		filePaths[i] = "templates/" + file.Name()
 	}
 
 	tmpl, err := template.ParseFS(templates, filePaths...)
@@ -155,14 +156,18 @@ func Cache(h http.Handler) http.Handler {
 		w.Header().Set("Cache-Control", "max-age=43200")
 		w.Header().Set("ETag", etag)
 
-		if match := r.Header.Get("If-None-Match"); match != "" {
-			if strings.Contains(match, etag) {
-				w.WriteHeader(http.StatusNotModified)
-				return
-			}
+		match := r.Header.Get("If-None-Match")
+		if match == "" {
+			h.ServeHTTP(w, r)
+			return
 		}
 
-		h.ServeHTTP(w, r)
+		if !strings.Contains(match, etag) {
+			h.ServeHTTP(w, r)
+			return
+		}
+
+		w.WriteHeader(http.StatusNotModified)
 	}
 
 	return http.HandlerFunc(fn)
@@ -174,20 +179,21 @@ func (n neuteredFileSystem) Open(p string) (http.File, error) {
 		return nil, err
 	}
 
+	defer func(f http.File) {
+		_ = f.Close()
+	}(f)
+
 	s, err := f.Stat()
 	if err != nil {
 		return nil, err
 	}
 
-	if s.IsDir() {
-		if _, err := n.fs.Open(filepath.Join(p, "index.html")); err != nil {
-			fileError := f.Close()
-			if fileError != nil {
-				return nil, fileError
-			}
+	if !s.IsDir() {
+		return f, nil
+	}
 
-			return nil, err
-		}
+	if _, err := n.fs.Open(filepath.Join(p, "index.html")); err != nil {
+		return nil, err
 	}
 
 	return f, nil
