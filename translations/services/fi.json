@@ -14,7 +14,7 @@
       {
         "description": "Hoidon suunnittelu, alkupuhdistus, syväpuhdistava anti-akne kuorinta, kasvonaamio ja loppuvoide.",
         "name": " Anti-Acne Treatment",
-        "price": "105.00"
+        "price": "120.00"
       },
       {
         "name": " Face Care Treatment",
@@ -29,7 +29,7 @@
       {
         "description": "Eri tyyppiset happokuorinnat ihotyypin ja iän mukaan. Hoitoon kuuluu myös alkupuhdistus, seerumi ja loppuvoide.",
         "name": " Peel + Treatment",
-        "price": "95.00"
+        "price": "100.00"
       },
       {
         "name": "Peeling",
@@ -69,7 +69,7 @@
       {
         "description": "Biorevitalisaatio ilman injektiota. Kaksivaiheinen hoito, johon kuuluu kuorinta ja erittäin voimakas A ja C-vitamiineilla tehty hoito.",
         "name": "Bio C",
-        "price": "115.00"
+        "price": "125.00"
       },
       {
         "price": "95.00",
@@ -93,51 +93,6 @@
       }
     ],
     "icon": "facial-treatment.svg"
-  },
-  {
-    "subtitle": "Aika on tullut",
-    "buttonOpen": "Katso Hinnat",
-    "buttonClose": "Sulje",
-    "prices": [
-      {
-        "description": "Vartalo-mesoterapia, mukaan lukien selluliitti-, lifting ja lipolyyttiset hoitot.",
-        "price": "from 60.00",
-        "name": "Mesotherapy (Body)"
-      },
-      {
-        "description": "Lymfakiertoa parantava fraktionaalinen radiofrekvenssi-hoito  Eximia hr77-laitteella.",
-        "name": "RF Lympha treatment",
-        "price": "100.00"
-      },
-      {
-        "description": "Painonpudotusohjelma ja ihon vahvistaminen vatsan alueella Eximia hr77 -laitteella (fraktionaalinen radiofrekvenssi-hoito, laserihoito, tyhjöhieronta)",
-        "price": "75.00",
-        "name": "RF Body 1 Side"
-      },
-      {
-        "name": "RF Body 2 Sides",
-        "description": "Painonpudotusohjelma ja ihon vahvistaminen Eximia hr77 -laitteella, kahdella alueella (fraktionaalinen radiofrekvenssi-hoito, laserihoito, tyhjöhieronta)",
-        "price": "95.00"
-      },
-      {
-        "description": "Lymfakierron tehostus ja painonpudotusohjelma vatsan alueella Eximia hr77 -laitteella,  fraktionaalinen radiofrekvenssi-hoito.",
-        "name": "RF Lympha & Fat",
-        "price": "130.00"
-      },
-      {
-        "price": "170.00",
-        "description": "Lymfakierron tehostus ja painonpudotusohjelma kahdella alueilla Eximia hr77 -laitteella,  fraktionaalinen radiofrekvenssi-hoito.",
-        "name": "RF Lympha & Fat 2 sides"
-      },
-      {
-        "name": "RF anti-cellulite legs",
-        "description": "Antiselluliittiohoito Eximia hr77-laitteella.",
-        "price": "120.00"
-      }
-    ],
-    "title": "Vartalo",
-    "description": "Kaikki, mitä kehosi tarvitsee ja mikä tuntuu mahtavalta viimeisimmän teknologian avulla. Jokainen menettely sisältää konsultaation ja henkilökohtaisen hoitosuunnitelman.",
-    "icon": "depilation.svg"
   },
   {
     "subtitle": "Kirsikka kakun päällä",
@@ -175,11 +130,6 @@
         "name": "Mesotherapy Elbow",
         "description": "Mesoterapia kyynärpäille.",
         "price": "80.00"
-      },
-      {
-        "name": "RF Arms",
-        "description": "Painonpudotusohjelma ja ihoa vahvistava hoito kyynärpäästä olkapäähän Eximia hr77-laitteella.",
-        "price": "95.00"
       }
     ],
     "description": "Käsihoito voidaan valita erilliseksi hoidoksi, lisäksi se on myös erinomainen valinta lisähoitona kasvo- tai vartalohoidon kanssa."

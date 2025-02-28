@@ -4,9 +4,6 @@ import (
 	"crypto/md5"
 	"embed"
 	"encoding/hex"
-	"github.com/go-chi/chi/v5"
-	"github.com/go-chi/chi/v5/middleware"
-	"github.com/go-chi/cors"
 	"html/template"
 	"io/fs"
 	"log"
@@ -16,6 +13,10 @@ import (
 	"path/filepath"
 	"strings"
 	"time"
+
+	"github.com/go-chi/chi/v5"
+	"github.com/go-chi/chi/v5/middleware"
+	"github.com/go-chi/cors"
 )
 
 //go:embed all:static/*
@@ -25,11 +26,7 @@ var Content embed.FS
 var templates embed.FS
 
 var tmpl = template.Must(parseTemplates())
-var web = map[string]Website{
-	"en": {},
-	"fi": {},
-	"ru": {},
-}
+var web = map[string]Website{"en": {}, "fi": {}, "ru": {}}
 var hash = md5.New()
 var md5sums = map[string]string{}
 
@@ -110,7 +107,10 @@ func main() {
 		panic(err)
 	}
 
-	static := http.StripPrefix("/static/", Cache(http.FileServer(neuteredFileSystem{http.FS(cont)})))
+	static := http.StripPrefix(
+		"/static/",
+		Cache(http.FileServer(neuteredFileSystem{http.FS(cont)})),
+	)
 
 	r.Handle("/static/*", static)
 	r.HandleFunc("/", serveWebpage)

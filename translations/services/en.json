@@ -13,12 +13,12 @@
       },
       {
         "description": "Deep cleanse, anti-acne peeling, face mask & anti-acne treatment ",
-        "name": " Anti-Acne Treatment",
-        "price": "105"
+        "name": "Anti-Acne Treatment",
+        "price": "120"
       },
       {
         "description": "Cleanse, enzyme peeling, 20-25 minutes massage, serum & final step regarding skin care. ",
-        "name": " Face Care Treatment",
+        "name": "Face Care Treatment",
         "price": "95"
       },
       {
@@ -28,8 +28,8 @@
       },
       {
         "description": "Chemical peeling with various acids depending on the skin type including cleansing, serum & final step regarding skin care.",
-        "name": " Peel + Treatment",
-        "price": "95"
+        "name": "Peel + Treatment",
+        "price": "100"
       },
       {
         "description": "Chemical peeling with various acids depending on the skin type but this should be taken as an addition to other face treatment offers.",
@@ -38,7 +38,7 @@
       },
       {
         "description": "Cleansing, 2 step special treatment (peeling & mask), everything is done around the eye area. ",
-        "name": " Eye Peeling Treatment",
+        "name": "Eye Peeling Treatment",
         "price": "50"
       },
       {
@@ -69,7 +69,7 @@
       {
         "description": "Bio-revitalization without injections, 2 phase treatment includes first, peeling with various acids and second, application of the highly concentrated vitamin cocktail that includes Hyaluronic & Ascorbic acids and vitamin A. ",
         "name": "Bio C",
-        "price": "115"
+        "price": "125"
       },
       {
         "description": "Bipolar RF Lifting procedure using Eximia hr77",
@@ -93,51 +93,6 @@
       }
     ],
     "subtitle": "Main Course"
-  },
-  {
-    "title": "Body",
-    "description": "All that your body will ever need to make you feel amazing using latest technologies. It includes consultation from the specialist and personalized program",
-    "icon": "depilation.svg",
-    "buttonOpen": "See Prices",
-    "buttonClose": "Close",
-    "prices": [
-      {
-        "description": "Mesotherapy point-by-point of the body, depending on the skin type. (Various medicine: anti-cellulite, lipolytic, silicium, firming cocktail, etc.)",
-        "name": "Mesotherapy (Body)",
-        "price": "from 60.00"
-      },
-      {
-        "description": "Lymphatic drainage of the legs using Eximia hr77 device with RF function.",
-        "name": "RF Lympha treatment",
-        "price": "100.00"
-      },
-      {
-        "description": "Weight loss programme using Eximia hr77 device (Radio Frequency, Laserporation & Vacuum Massage). For instance, abdomen.",
-        "name": "RF Body 1 Side",
-        "price": "75.00"
-      },
-      {
-        "description": "Weight loss programme using Eximia hr77 device (Radio Frequency, Laserporation & Vacuum Massage). For instance, abdomen and back side.",
-        "name": "RF Body 2 Sides",
-        "price": "95.00"
-      },
-      {
-        "description": "Lymphatic drainage of the legs and massage using Eximia hr77 device & weight loss programme for the abdomen.",
-        "name": "RF Lympha & Fat",
-        "price": "130.00"
-      },
-      {
-        "description": "Lymphatic drainage of the legs and massage using Eximia hr77 device & weight loss programme for the abdomen & sides.",
-        "name": "RF Lympha & Fat 2 sides",
-        "price": "170.00"
-      },
-      {
-        "description": "Anti-cellulite programme using Eximia hr77 device.",
-        "name": "RF anti-cellulite legs",
-        "price": "120.00"
-      }
-    ],
-    "subtitle": "It is time"
   },
   {
     "title": "Hands",
@@ -175,11 +130,6 @@
         "description": "Lipolytic or firming mesotherapy of elbow area.",
         "name": "Mesotherapy Elbow",
         "price": "80.00"
-      },
-      {
-        "description": "Weight loss or firming programme using Eximia hr77 from shoulder to elbow.",
-        "name": "RF Arms",
-        "price": "95.00"
       }
     ],
     "subtitle": "Cherry on top"
