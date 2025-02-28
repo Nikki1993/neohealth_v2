@@ -81,7 +81,7 @@ type Website struct {
 	Lang      string
 	Languages []Language
 	Intro     Intro
-	Services  [3]Card
+	Services  [2]Card
 	Brands    Brands
 	About     About
 	Footer    Footer
@@ -168,7 +168,7 @@ func GenerateTranslations(lang string) (Website, error) {
 
 	website.Languages = languages
 	ext := lang + ".json"
-	website.Services, err = parseJSON[[3]Card]("services/" + ext)
+	website.Services, err = parseJSON[[2]Card]("services/" + ext)
 	if err != nil {
 		return website, err
 	}
